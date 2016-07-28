@@ -6,7 +6,7 @@ from rest_framework import viewsets
 class NodeType(models.Model):
     name = models.CharField(max_length=12)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
 
