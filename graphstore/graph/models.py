@@ -13,7 +13,7 @@ class NodeType(models.Model):
 class NodeTypeSerializer(ModelSerializer):
     class Meta:
         model = NodeType
-        fields = ('name')
+        fields = ['name']
 
 
 class NodeTypeViewSet(viewsets.ModelViewSet):
