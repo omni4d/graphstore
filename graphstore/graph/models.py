@@ -1,4 +1,4 @@
-from django.db.models import Model, CharField
+from django.db.models import Model, CharField, ForeignKey, CASCADE
 from rest_framework.serializers import ModelSerializer
 from rest_framework.viewsets import ModelViewSet
 
@@ -37,3 +37,19 @@ class EdgeTypeSerializer(ModelSerializer):
 class EdgeTypeViewSet(ModelViewSet):
     queryset = EdgeType.objects.all()
     serializer_class = EdgeTypeSerializer
+
+
+class Node(Model):
+    uuid = CharField(primary_key=True, max_length=64)
+    node_type = ForeignKey(NodeType, on_delete=CASCADE)
+
+
+class NodeSerializer(ModelSerializer):
+    class Meta:
+        model = Node
+        fields = ['uuid', 'node_type']
+
+
+class NodeViewSet(ModelViewSet):
+    queryset = Node.objects.all()
+    serializer_class = NodeSerializer
