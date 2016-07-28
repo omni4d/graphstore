@@ -13,8 +13,7 @@ def create_nodetypes(apps, schema_editor):
 
 def delete_nodetypes(apps, schema_editor):
     NodeType = apps.get_model('graph', 'NodeType')
-    for nodetype in ['class', 'individual', 'event', 'tuple']:
-        NodeType(name=nodetype).delete()
+    NodeType.objects.all().delete()
 
 
 class Migration(migrations.Migration):
