@@ -3,6 +3,7 @@ from rest_framework.serializers import ModelSerializer
 from rest_framework.viewsets import ModelViewSet
 
 
+# Node Types
 class NodeType(Model):
     name = CharField(max_length=12)
 
@@ -21,6 +22,7 @@ class NodeTypeViewSet(ModelViewSet):
     serializer_class = NodeTypeSerializer
 
 
+# Edge Types
 class EdgeType(Model):
     name = CharField(max_length=12)
 
@@ -39,6 +41,7 @@ class EdgeTypeViewSet(ModelViewSet):
     serializer_class = EdgeTypeSerializer
 
 
+# Nodes
 class Node(Model):
     uuid = CharField(primary_key=True, max_length=64)
     node_type = ForeignKey(NodeType, on_delete=CASCADE)
@@ -53,3 +56,21 @@ class NodeSerializer(ModelSerializer):
 class NodeViewSet(ModelViewSet):
     queryset = Node.objects.all()
     serializer_class = NodeSerializer
+
+
+# Edges
+class Edge(Model):
+    from_node = ForeignKey(Node, on_delete=CASCADE)
+    to_node = ForeignKey(Node, on_delete=CASCADE)
+    edge_type = ForeignKey(EdgeType, on_delete=CASCADE)
+
+
+class EdgeSerializer(ModelSerializer):
+    class Meta:
+        model = Edge
+        fields = ['edge_type', 'from_node', 'to_node']
+
+
+class EdgeViewSet(ModelViewSet):
+    queryset = Edge.objects.all()
+    serializer_class = EdgeSerializer
