@@ -3,10 +3,15 @@ from rest_framework.routers import DefaultRouter
 from graph.models import NodeTypeViewSet, EdgeTypeViewSet, NodeViewSet
 
 urlpatterns = [url(r'^api-auth/', include('rest_framework.urls'))]
-
 router = DefaultRouter()
-router.register(r'NodeTypes', NodeTypeViewSet)
-router.register(r'EdgeTypes', EdgeTypeViewSet)
-router.register(r'Nodes', NodeViewSet)
+
+routes = {
+    'NodeTypes': NodeTypeViewSet,
+    'EdgeTypes': EdgeTypeViewSet,
+    'Nodes': NodeViewSet
+}
+
+for route, viewset in routes.items():
+    router.register(route, viewset)
 
 urlpatterns += router.urls
