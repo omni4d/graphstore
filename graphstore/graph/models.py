@@ -60,8 +60,10 @@ class NodeViewSet(ModelViewSet):
 
 # Edges
 class Edge(Model):
-    from_node = ForeignKey(Node, on_delete=CASCADE)
-    to_node = ForeignKey(Node, on_delete=CASCADE)
+    from_node = ForeignKey(
+        Node, on_delete=CASCADE, related_name='outgoing_edge')
+    to_node = ForeignKey(
+        Node, on_delete=CASCADE, related_name='incoming_edge')
     edge_type = ForeignKey(EdgeType, on_delete=CASCADE)
 
 
