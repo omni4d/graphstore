@@ -11,6 +11,12 @@ def create_nodetypes(apps, schema_editor):
         NodeType(name=nodetype).save()
 
 
+def delete_nodetypes(apps, schema_editor):
+    NodeType = apps.get_model('graph', 'NodeType')
+    for nodetype in ['class', 'individual', 'event', 'tuple']:
+        NodeType(name=nodetype).delete()
+
+
 class Migration(migrations.Migration):
 
     dependencies = [
@@ -18,5 +24,5 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RunPython(create_nodetypes)
+        migrations.RunPython(create_nodetypes, delete_nodetypes)
     ]
