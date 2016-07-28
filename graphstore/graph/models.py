@@ -1,6 +1,6 @@
 from django.db import models
 from rest_framework.serializers import ModelSerializer
-from rest_framework import viewsets
+from rest_framework.viewsets import ModelViewSet
 
 
 class NodeType(models.Model):
@@ -16,6 +16,6 @@ class NodeTypeSerializer(ModelSerializer):
         fields = ['name']
 
 
-class NodeTypeViewSet(viewsets.ModelViewSet):
+class NodeTypeViewSet(ModelViewSet):
     queryset = NodeType.objects.all()
     serializer_class = NodeTypeSerializer
