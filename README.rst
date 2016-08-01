@@ -27,25 +27,3 @@ On OS X, you may need to use the IP address of your docker virtual machine rathe
 
 .. code::
     docker-machine ip default
-
-Sometimes, on the first attempt, the database container is not ready when the web server starts. In that case, you may see errors similar to:
-
-.. code::
-    web_1  | django.db.utils.OperationalError: could not connect to server: Connection refused
-    web_1  |    Is the server running on host "db" and accepting
-    web_1  |    TCP/IP connections on port 5432?
-    web_1  |
-
-and
-
-.. code::
-    db_1   | LOG:  database system was shut down
-    db_1   | LOG:  MultiXact member wraparound protections are now enabled
-    db_1   | LOG:  database system is ready to accept connections
-    db_1   | LOG:  autovacuum launcher started
-
-In that case, stop the containers with CTRL+C and restart with:
-
-.. code::
-
-  docker-compose up
