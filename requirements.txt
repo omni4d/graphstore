@@ -1,5 +1,5 @@
 dj-database-url==0.4.1
-Django==1.9.8
+Django==1.10
 django-filter==0.13.0
 djangorestframework==3.4.1
 gunicorn==19.6.0
