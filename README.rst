@@ -1,6 +1,6 @@
 Graphstore
 ==========
-An implementation of a 4D model within a relational database with a RESTful api.
+A relational database implementation of a 4D model with a RESTful api.
 
 Getting Started
 ---------------
