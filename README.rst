@@ -1,5 +1,6 @@
-Omni4d Graphstore Project
-=========================
+Graphstore
+==========
+An implementation of a 4D model within a relational database with a RESTful api.
 
 Getting Started
 ---------------
